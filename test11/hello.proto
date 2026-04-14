@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+// package must be defined at the top
+package todoPackage;
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayGoodbye (GoodbyeReq) returns (GoodbyeReply) {} 
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message GoodbyeReq {
+  string peru23 = 1;
+}
+
+message GoodbyeReply {
+  string resp23 = 1;
+  string time23 = 2;
+}
+// *************************************************************************************** //
+
+service TodoService {
+  rpc GetTodo (TodoRequest) returns (TodoItem) {}
+}
+
+message TodoRequest {
+  int32 id = 1;
+}
+
+message TodoItem {
+  int32 id = 1;
+  string task = 2;
+}

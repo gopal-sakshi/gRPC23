@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package sportsPackage;
+
+service FootballService {
+    // 'stream' keyword tells gRPC to send multiple responses
+    rpc GetFootballers (LeagueRequest) returns (stream Footballer) {}
+}
+
+message LeagueRequest {
+    string league_name = 1;
+}
+
+message Footballer {
+    string name = 1;
+    string team = 2;
+    int32 age = 3;
+}

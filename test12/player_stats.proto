@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package statsPackage;
+
+service StatsService {
+    rpc UploadStats (stream StatUpdate) returns (Summary) {}
+}
+
+message StatUpdate {
+    string player_name = 1;
+    int32 goals_scored = 2;
+}
+
+message Summary {
+    string report = 1;
+    int32 total_goals = 2;
+}
