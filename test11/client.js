@@ -1,5 +1,7 @@
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
+const metaAuth23 = new grpc.Metadata();
+metaAuth23.add('authorization', 'subbaraoToken23');     // change this to apparao -- it fails
 
 const packageDefinition = protoLoader.loadSync('hello.proto', {});
 const helloProto = grpc.loadPackageDefinition(packageDefinition);
@@ -17,7 +19,7 @@ function main() {
     const footballClient = new sportsProto.FootballService('localhost:50051', grpc.credentials.createInsecure());
 
 
-    greeterClient.sayHello({ name: 'World' }, (err, response) => {
+    greeterClient.sayHello({ name: 'World' }, metaAuth23, (err, response) => {
         if (err) return console.error(err);
         console.log('Greeting:', response.message);
     });

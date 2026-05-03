@@ -1,5 +1,7 @@
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
+const { authInterceptor } = require('./middleware');
+
 
 const packageDefinition = protoLoader.loadSync('hello.proto', {});
 const sportsDef = protoLoader.loadSync('footballer23.proto', {});
@@ -50,8 +52,8 @@ function main() {
 
     const myPackage = helloProto.todoPackage; // Access the package first
     server.addService(myPackage.Greeter.service, { 
-        sayHello: sayHello,
-        sayGoodbye: byeCheppuko 
+        sayHello: authInterceptor(sayHello),            // uses auth
+        sayGoodbye: byeCheppuko                         // doesnt use auth
     });
     server.addService(myPackage.TodoService.service, { GetTodo: getTodoFn }); 
 
