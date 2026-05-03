@@ -1,0 +1,9 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": ".",
+  "entryFile": "main",
+  "compilerOptions": {
+    "assets": ["generated/**/*.proto"],
+    "watchAssets": true
+  }
+}
