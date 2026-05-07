@@ -4,6 +4,11 @@ package index;
 
 service IndexService {
   rpc GetData (GetRequest) returns (GetResponse);
+  rpc GetFootballer23 (GetFootballerRequest) returns (GetFootballerResponse);
+}
+
+service SportsService23 {
+    rpc GetChessPlayers (chessPlayersReq11) returns (chessPlayersResp11);
 }
 
 message GetRequest {
@@ -15,3 +20,34 @@ message GetResponse {
   string name = 2;
   string description = 3;
 }
+
+
+message GetFootballerRequest {
+  string id = 1;
+}
+
+message GetFootballerResponse {
+  string id = 1;
+  string playerName = 2;
+  string position = 3;
+}
+
+message chessPlayersReq11 {
+    string desamu = 1;
+    // optional limit11 = 2;
+}
+
+message chessPlayer45 {
+    optional string id = 1;
+    string name22 = 2;
+    string country22 = 3;
+    bool is_active = 4;
+}
+
+message chessPlayersResp11 {
+    bool success23 = 1;
+    repeated chessPlayer45 data11 = 3;
+    optional int32 totalCount33 = 4;
+}
+
+

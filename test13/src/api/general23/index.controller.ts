@@ -1,6 +1,6 @@
 import { Controller } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
-import { GetRequest, GetResponse } from './generated/index';
+import { GetFootballerReq23, GetFootballerResp23, GetRequest, GetResponse } from '../../../generated/index';
 
 @Controller()
 export class IndexController {
@@ -17,4 +17,17 @@ export class IndexController {
       description: 'A masterpiece by Christopher Nolan.',
     };
   }
+
+
+  @GrpcMethod('IndexService', 'GetFootballer23')
+  getFootballer23_edoPeruIchuko(data: GetFootballerReq23): GetFootballerResp23 {
+    console.log('Received gRPC request for ID:', data.id);
+    return {
+      id: data.id,
+      playerName: 'Karim Benzema',
+      position: 'Striker',
+    };
+  }
+
+
 }
