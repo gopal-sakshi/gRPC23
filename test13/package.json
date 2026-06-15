@@ -9,7 +9,8 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "proto:gen": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./src/grpc/generated --ts_proto_opt=outputServices=grpc-js,env=node,esModuleInterop=true src/grpc/generated/index.proto"
+    "proto:gen:23": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=generated --ts_proto_opt=nestJs=true,fileSuffix=.proto,esModuleInterop=true -I ./src/api ./src/api/index.proto"
+
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.9.0",
@@ -28,7 +29,7 @@
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
     "@types/node": "^20.19.39",
-    "ts-proto": "^1.150.0",
+    "ts-proto": "^1.181.2",
     "typescript": "^5.1.0"
   }
 }

@@ -13,4 +13,14 @@ Bidirectional Streaming : Both send streams simultaneously (a Chat App)
 - node statsServer.js 
 - node statsClient.js  
 
+
+`nestJS`
+- cd test13
+- npm run start:dev
+- APIs
+    general23 -- GetData, GetFootballer23
+    sports23 --- GetChessPlayers
+    stream23 --- StreamFootballerLive, UploadMatchStats, LiveMatchChat
+- hit the APIs from postman
+
 <!-- ************************************************************************************ -->

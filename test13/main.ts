@@ -10,6 +10,9 @@ async function bootstrap() {
     transport: Transport.GRPC,
     options: {
       package: 'index',
+      loader: {
+        keepCase: true, // Forces NestJS to preserve exact casing across boundaries
+      },
       protoPath: path.join(__dirname, 'generated', 'index.proto'),
       url: '0.0.0.0:50051',
     },
