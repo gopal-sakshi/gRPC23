@@ -1,6 +1,9 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UseInterceptors } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
 import { chessPlayersReq11, chessPlayersResp11, GetFootballerReq23, GetFootballerResp23, GetRequest, GetResponse } from '../../../generated/index';
+import { GrpcLogging23Interceptor } from '../../common/interceptors/logging23.interceptor';
+import { Metadata, ServerUnaryCall } from '@grpc/grpc-js';
+import { Observable, of, delay } from 'rxjs';
 
 const chessPlayers = [
     { name22: 'vishyAnand', country22: 'India', is_active: false },
@@ -17,16 +20,30 @@ const chessPlayers = [
     { name22: 'wei yi', country22: 'China', is_active: true },
 ]
 
+@UseInterceptors(GrpcLogging23Interceptor)
 @Controller()
 export class SportsService23Controller {
 
     @GrpcMethod('SportsService23', 'GetChessPlayers')
-    getChessPlayer23_edoPeruIchuko(data: chessPlayersReq11): chessPlayersResp11 {
-        console.log('Received gRPC request :', data);
-        return {
+    getChessPlayer23_edoPeruIchuko(
+        data: chessPlayersReq11,               // 1. The payload typed from your proto
+        metadata: Metadata,                    // 2. gRPC Metadata (for Correlation ID)
+        call: ServerUnaryCall<any, any>
+    ): Observable<chessPlayersResp11> {
+        console.log('Received gRPC request :', data, new Date().toISOString());
+
+        const players23 = chessPlayers.filter(player => player.country22 == data.desamu);
+
+        // Construct the payload response object
+        const response: chessPlayersResp11 = {
             success23: true,
-            data11: chessPlayers.filter(player => player.country22 == data.desamu)
+            data11: players23
         };
+
+        // Use RxJS pipeline to cleanly delay the execution thread
+        return of(response).pipe(
+            delay(3000)
+        );
     }
 
 }
