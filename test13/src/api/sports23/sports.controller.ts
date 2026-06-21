@@ -6,18 +6,18 @@ import { Metadata, ServerUnaryCall } from '@grpc/grpc-js';
 import { Observable, of, delay } from 'rxjs';
 
 const chessPlayers = [
-    { name22: 'vishyAnand', country22: 'India', is_active: false },
-    { name22: 'magnus_carlsen', country22: 'Norway', is_active: true },
-    { name22: 'jose raul capablanca', country22: 'Cuba', is_active: false },
-    { name22: 'paul morphy', country22: 'USA', is_active: false },
-    { name22: 'hikaru_nakamura', country22: 'USA', is_active: true },
-    { name22: 'fabiano_caruano', country22: 'USA', is_active: true },
-    { name22: 'gukesh dommaraju', country22: 'India', is_active: true },
-    { name22: 'arjun erigaisi', country22: 'India', is_active: true },
-    { name22: 'alireza_firouja', country22: 'France', is_active: true },
-    { name22: 'rameshbabu_praggnanada', country22: 'India', is_active: true },
-    { name22: 'ding liren', country22: 'China', is_active: true },
-    { name22: 'wei yi', country22: 'China', is_active: true },
+    { id: '121', name22: 'vishyAnand', country22: 'India', is_active: false },
+    { id: '122', name22: 'magnus_carlsen', country22: 'Norway', is_active: true },
+    { id: '123', name22: 'jose raul capablanca', country22: 'Cuba', is_active: false },
+    { id: '124', name22: 'paul morphy', country22: 'USA', is_active: false },
+    { id: '125', name22: 'hikaru_nakamura', country22: 'USA', is_active: true },
+    { id: '126', name22: 'fabiano_caruano', country22: 'USA', is_active: true },
+    { id: '127', name22: 'gukesh dommaraju', country22: 'India', is_active: true },
+    { id: '128', name22: 'arjun erigaisi', country22: 'India', is_active: true },
+    { id: '129', name22: 'alireza_firouja', country22: 'France', is_active: true },
+    { id: '130', name22: 'rameshbabu_praggnanada', country22: 'India', is_active: true },
+    { id: '131', name22: 'ding liren', country22: 'China', is_active: true },
+    { id: '132', name22: 'wei yi', country22: 'China', is_active: true },
 ]
 
 @UseInterceptors(GrpcLogging23Interceptor)
